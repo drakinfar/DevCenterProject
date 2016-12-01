@@ -14,7 +14,8 @@ export class SettlementService {
 
 	getSettlement(Id) {
 		return this.http.get(`/api/Settlement/GetSettlement?Id=${Id}`)
-			.map(result => result.json());
+			.map(result =>		
+				result.json());
 	}
 
 	//getArchiveList() {
