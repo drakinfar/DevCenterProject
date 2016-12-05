@@ -7,6 +7,13 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { SettlementComponent } from './components/settlement/settlement.component';
+import { InnovationComponent } from './components/innovation/innovation.component';
+import { LocationComponent } from './components/location/location.component';
+import { MilestoneComponent } from './components/milestone/milestone.component';
+import { NemisisComponent } from './components/nemisis/nemisis.component';
+import { PrincipleComponent } from './components/principle/principle.component';
+import { QuarryComponent } from './components/quarry/quarry.component';
+import { ResourceComponent } from './components/resource/resource.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -16,6 +23,13 @@ import { SettlementComponent } from './components/settlement/settlement.componen
       CounterComponent,
 			FetchDataComponent,
 			SettlementComponent,
+			InnovationComponent,
+			LocationComponent,
+			MilestoneComponent,
+			NemisisComponent,
+			PrincipleComponent,
+			QuarryComponent,
+			ResourceComponent,
       HomeComponent
     ],
     imports: [
