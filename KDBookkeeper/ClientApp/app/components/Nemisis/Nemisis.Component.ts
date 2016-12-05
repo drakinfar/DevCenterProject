@@ -20,7 +20,7 @@ export class NemisisComponent implements OnInit {
 			});
 
 		if (this.id > 0) {
-			this.nemisistService.getNemsisList(this.id)
+			this.nemisistService.getNemisisList(this.id)
 				.subscribe(item => {
 					this.nemisisList = item;
 				});
