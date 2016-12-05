@@ -3,7 +3,7 @@ import { InnovationService } from '../../services/innovation.service'
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
-	selector: 'innovation-List',
+	selector: 'innovation-list',
 	template: require('./innovation.component.html'),
 	providers: [InnovationService]
 })

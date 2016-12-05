@@ -18,13 +18,4 @@ export class SettlementService {
 				result.json());
 	}
 
-	//getArchiveList() {
-	//	return this.http.get(`/api/Article/GetArchiveList`)
-	//		.map(result => result.json());
-	//}
-
-	//getArchivesByMonth(id) {
-	//	return this.http.get(`/api/Article/GetArchivesByMonth?start=${id}`)
-	//		.map(result => result.json());
-	//}
 }

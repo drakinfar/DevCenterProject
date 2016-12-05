@@ -8,7 +8,7 @@ export class QuarryService {
 	constructor(private http: Http) { }
 
 	getQuarryList(Id) {
-		return this.http.get('/api/Quarry/GetQuarryList?Id=${Id}')
+		return this.http.get(`/api/Quarry/GetQuarryList?Id=${Id}`)
 			.map(result =>
 				result.json());
 		}

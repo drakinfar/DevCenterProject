@@ -8,7 +8,7 @@ export class LocationService {
 	constructor(private http: Http) { }
 
 		getLocationList(Id) {
-		return this.http.get('/api/Location/GetLocationList?Id=${Id}')
+		return this.http.get(`/api/Location/GetLocationList?Id=${Id}`)
 			.map(result =>
 				result.json());
 		}

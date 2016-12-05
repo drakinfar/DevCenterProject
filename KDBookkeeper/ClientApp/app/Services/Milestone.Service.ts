@@ -8,7 +8,7 @@ export class MilestoneService {
 	constructor(private http: Http) { }
 
 	getMilestoneList(Id) {
-		return this.http.get('/api/Milestone/GetMilestoneList?Id=${Id}')
+		return this.http.get(`/api/Milestone/GetMilestoneList?Id=${Id}`)
 			.map(result =>
 				result.json());
 		}
