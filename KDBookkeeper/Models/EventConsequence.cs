@@ -13,7 +13,9 @@ namespace KDBookkeeper.Models
 
 		public virtual LanternEvent LanternEvent { get; set; }
 
-		public int ConsequenceType { get; set; } //the type of consequence i.e quarry, nemisis, etc
+		public int ConsequenceType { get; set; } //the action to perform
+
+		public int ConsequenceObjectType { get; set; } //the type of consequence i.e quarry, nemisis, etc
 
 		public int ConsequenceObjectId { get; set; } //the id of the consequence to help look up.
 	}

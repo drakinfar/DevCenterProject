@@ -4,39 +4,58 @@
 			<h1>{{settlement.name}}</h1>
 		</div>
 		<div class="col-md-3">
-			Lantern Year: {{settlement.lanternYear}}
+			<h2>
+				Current Lantern Year: {{settlement.lanternYear}}
+			</h2>
 		</div>
 	</div>
+	<div class="row">&nbsp;</div>
 	<div class="row">
 		<div class="col-sm-3">
-			Population: {{settlement.population}}
+			<h3>
+				Population: {{settlement.population}}
+			</h3>
 		</div>
 		<div class="col-sm-3">
-			Deaths: {{settlement.deathCount}}
+			<h3>
+				Deaths: {{settlement.deathCount}}
+			</h3>
 		</div>
 		<div class="col-sm-3">
-			Lost Settlements: {{settlement.lostSettlements}}
+			<h3>
+				Lost Settlements: {{settlement.lostSettlements}}
+			</h3>
 		</div>
 	</div>
+	<div class="row">&nbsp;</div>
 	<div class="row">
 		<div class="col-sm-3">
-			Survival Limit: {{settlement.survivalLimit}}
+			<h3>
+				Survival Limit: {{settlement.survivalLimit}}
+			</h3>
 		</div>
 	</div>
 </div>
 <div class="row">&nbsp;</div>
-<div class="row">
-	<innovation-list></innovation-list>
-</div>
-<div class="row">&nbsp;</div>
-<div class="row">
-	<nemisis-list></nemisis-list>
-</div>
-<div class="row">&nbsp;</div>
-<div class="row">
-	<quarry-list></quarry-list>
-</div>
-<div class="row">&nbsp;</div>
-<div class="row">
-	<milestone-list></milestone-list>
+<div class="col-lg-12">
+	<div class="row">
+		<div class="col-md-6">
+			<milestone-list></milestone-list>
+			<div class="row">&nbsp;</div>
+			<location-list></location-list>
+			<div class="row">&nbsp;</div>
+			<principle-list></principle-list>
+		</div>
+		<div class="col-md-6">
+			<innovation-list></innovation-list>
+			<div class="row">&nbsp;</div>
+			<nemisis-list></nemisis-list>
+			<div class="row">&nbsp;</div>
+			<quarry-list></quarry-list>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<resource-list></resource-list>
+	</div>
 </div>

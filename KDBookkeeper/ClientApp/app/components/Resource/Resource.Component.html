@@ -13,15 +13,22 @@
 	</div>
 </div>
 <div *ngIf="resourceList.length > 0" style="max-height: 300px; overflow: auto; border: 1px solid #121416">
+	<div class="row">
+		<div class="col-sm-1">
+			<h4>Quantity</h4>
+		</div>
+		<div class="col-sm-11">
+			<h4>Resource</h4>
+		</div>	
+	</div>
 	<div class="col-sm-12" *ngFor="let resource of resourceList">
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-1">
 				{{resource.quantity}}
 			</div>
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 				{{resource.name}}
 			</div>		
 		</div>
-		<hr />
 	</div>
 </div>
