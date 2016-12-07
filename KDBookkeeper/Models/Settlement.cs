@@ -26,6 +26,9 @@ namespace KDBookkeeper.Models
 		public int Population { get; set; }
 		public int LostSettlements { get; set; }
 		public bool Active { get; set; }
+		public int GameTypeId { get; set; }
+
+		public GameType GameType { get; set; }
 
 		public virtual ICollection<SettlementInnovation> SettlementInnovation { get; set; }
 		public virtual ICollection<SettlementLocation> SettlementLocation { get; set; }

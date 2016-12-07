@@ -25,6 +25,14 @@ namespace KDBookkeeper.Models
 									.HasMaxLength(50);
 			});
 
+			modelBuilder.Entity<EventChart>(entity =>
+			{
+				entity.HasOne(d => d.LanternEvent)
+					.WithMany(p => p.EventCharts)
+					.OnDelete(DeleteBehavior.Restrict)
+					.HasConstraintName("FK_EventChart_LanternEvent");
+			});
+
 			modelBuilder.Entity<EventConsequence>(entity =>
 			{
 				entity.HasOne(d => d.LanternEvent)
@@ -198,6 +206,12 @@ namespace KDBookkeeper.Models
 				entity.Property(e => e.Name)
 									.IsRequired()
 									.HasMaxLength(150);
+
+				entity.HasOne(d => d.GameType)
+									.WithMany(p => p.Settlements)
+									.HasForeignKey(d => d.GameTypeId)
+									.OnDelete(DeleteBehavior.Restrict)
+									.HasConstraintName("FK_Settlement_GameType");
 			});
 
 			modelBuilder.Entity<SettlementInnovation>(entity =>

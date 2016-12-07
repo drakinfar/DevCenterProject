@@ -10,6 +10,7 @@ namespace KDBookkeeper.Models
 			GameEvents = new HashSet<GameEvents>();
 			SettlementMileStones = new HashSet<SettlementMileStones>();
 			EventConsequences = new HashSet<EventConsequence>();
+			EventCharts = new HashSet<EventChart>();
 		}
 
 		public int Id { get; set; }
@@ -22,5 +23,6 @@ namespace KDBookkeeper.Models
 		public virtual ICollection<GameEvents> GameEvents { get; set; }
 		public virtual ICollection<SettlementMileStones> SettlementMileStones { get; set; }
 		public virtual ICollection<EventConsequence> EventConsequences { get; set; }
+		public virtual ICollection<EventChart> EventCharts { get; set; }
 	}
 }

@@ -1,0 +1,16 @@
+﻿<form #form="ngForm" (ngSubmit)="ViewSettlement(form.value); form.reset()">
+	<div class="col-sm-12 form-group">
+		<select>
+			<option *ngFor="let settlement of settlementList" value="{{settlement.id}}">
+				{{settlement.name}}
+			</option>
+		</select>
+	</div>
+	<div class="col-sm-12 form-group">
+		<div class="col-sm-2">
+			<button class="btn btn-primary" type="submit">
+				<span class="glyphicon glyphicon-save"></span> Submit
+			</button>
+		</div>
+	</div>
+</form>

@@ -14,6 +14,7 @@ import { NemisisComponent } from './components/nemisis/nemisis.component';
 import { PrincipleComponent } from './components/principle/principle.component';
 import { QuarryComponent } from './components/quarry/quarry.component';
 import { ResourceComponent } from './components/resource/resource.component';
+import { SettlementListComponent } from './components/settlement/settlementList.component'
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -30,6 +31,7 @@ import { ResourceComponent } from './components/resource/resource.component';
 			PrincipleComponent,
 			QuarryComponent,
 			ResourceComponent,
+			SettlementListComponent,
       HomeComponent
     ],
     imports: [

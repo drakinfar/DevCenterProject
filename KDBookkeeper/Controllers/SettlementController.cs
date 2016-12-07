@@ -36,9 +36,9 @@ namespace KDBookkeeper.Controllers
 		}
 
 		[HttpGet("[action]")]
-		public IEnumerable<string> GetSettlementNames()
+		public IEnumerable<Settlement> GetSettlementNames()
 		{
-			return _context.Settlement.Where(c=> c.Active).Select(c => c.Name);
+			return _context.Settlement.Where(c=> c.Active);
 		}
 	}
 }
