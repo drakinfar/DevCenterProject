@@ -9,7 +9,7 @@ export class SettlementService {
 
 	getSettlementNames() {
 		return this.http.get('/api/Settlement/GetSettlementNames')
-			.map(result => result.json());
+			.map(result =>  result.json());
 	}
 
 	getSettlement(Id) {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UniversalModule } from 'angular2-universal';
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -43,7 +44,8 @@ import { SettlementListComponent } from './components/settlement/settlementList.
 					{ path: 'fetch-data', component: FetchDataComponent },
 					{ path: 'settlement/:id', component: SettlementComponent },
           { path: '**', redirectTo: 'home' }
-        ])
+				]),
+			FormsModule
     ]
 })
 export class AppModule {

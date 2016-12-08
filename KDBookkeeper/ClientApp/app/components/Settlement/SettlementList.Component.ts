@@ -1,9 +1,9 @@
 ﻿import { Component, OnInit, Input } from '@angular/core'
 import { SettlementService } from '../../services/settlement.service'
 import { ActivatedRoute } from '@angular/router'
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { KDSettlement } from './Settlement.Classes'
-import { Router } from "angular2/router";
+import { Router } from "@angular/router"
 
 @Component({
 	selector: 'settlement-list',
@@ -11,7 +11,7 @@ import { Router } from "angular2/router";
 	providers: [SettlementService]
 })
 export class SettlementListComponent implements OnInit {
-	@Input() settlementList = {};
+	settlementList = [];
 	@Input() id = 0;
 
 	settlement: KDSettlement = new KDSettlement(0, "");
@@ -19,9 +19,9 @@ export class SettlementListComponent implements OnInit {
 	constructor(private settlementService: SettlementService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
 	selectSettlement(form: any) {
-		this.settlement = new KDSettlement(form.Id, form.Name)
+		this.settlement = new KDSettlement(form.value, "")
 		//move to the new page
-		this.router.navigate(['/settlement', form.Id]);
+		this.router.navigate(['/settlement', form.value]);
 	}
 
 	ngOnInit(): void {
@@ -32,17 +32,13 @@ export class SettlementListComponent implements OnInit {
 
 		this.settlementService.getSettlementNames()
 			.subscribe(settlement => {
-				var aArray = [];
-				debugger;
 				for (var i = 0; i < settlement.length; i++) {
-					debugger;
-					if (settlement[i].Id == this.id) {
-						this.settlement = new KDSettlement(settlement[i].Id, settlement[i].Name);
+					if (settlement[i].Id == this.id) { //set the selected item
+						this.settlement = new KDSettlement(settlement[i].id, settlement[i].name);
 					}
 
-					aArray.push(new KDSettlement(settlement[i].Id, settlement[i].Name))
+					this.settlementList.push(new KDSettlement(settlement[i].id, settlement[i].name))
 				}
-				this.settlementList = aArray;
 			});
 
 	}
