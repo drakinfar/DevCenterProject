@@ -1,0 +1,30 @@
+﻿<div class="col-md-12">
+	<h2>New Settlement</h2>
+	<form #form="ngForm" (ngSubmit)="createNewSettlement(form.value)">
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="nameInput">Name</label>
+				<input type="text" id="nameInput" placeholder="Name" name="name" ngModel>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="populationInput">Population</label>
+				<input type="text" id="populationInput" placeholder="Current Population" name="population" ngModel>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="deathInput">Death Count</label>
+				<input type="text" id="deathInput" placeholder="Number of Deaths" name="death" ngModel>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<button type="submit" class="bg-warning">
+					<span class="glyphicon glyphicon-save"></span>Submit
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

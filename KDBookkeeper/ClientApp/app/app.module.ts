@@ -16,6 +16,7 @@ import { PrincipleComponent } from './components/principle/principle.component';
 import { QuarryComponent } from './components/quarry/quarry.component';
 import { ResourceComponent } from './components/resource/resource.component';
 import { SettlementListComponent } from './components/settlement/settlementList.component'
+import { SettlementNewComponent } from './components/settlement/settlementNew.component'
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -33,6 +34,7 @@ import { SettlementListComponent } from './components/settlement/settlementList.
 			QuarryComponent,
 			ResourceComponent,
 			SettlementListComponent,
+			SettlementNewComponent,
       HomeComponent
     ],
     imports: [
@@ -42,7 +44,15 @@ import { SettlementListComponent } from './components/settlement/settlementList.
           { path: 'home', component: HomeComponent },
           { path: 'counter', component: CounterComponent },
 					{ path: 'fetch-data', component: FetchDataComponent },
-					{ path: 'settlement/:id', component: SettlementComponent },
+					{
+						path: 'settlement',
+						children: [
+							{ path: 'view/:id', component: SettlementComponent }, // url: settlement/view/#
+							{ path: 'new', component: SettlementNewComponent } // url: settlement/new
+						]
+					},
+					//{ path: 'settlement/:id', component: SettlementComponent },
+					//{ path: 'settlement/new', component: SettlementNewComponent },
           { path: '**', redirectTo: 'home' }
 				]),
 			FormsModule

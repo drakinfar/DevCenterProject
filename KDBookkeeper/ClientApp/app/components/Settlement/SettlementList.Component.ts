@@ -21,7 +21,7 @@ export class SettlementListComponent implements OnInit {
 	selectSettlement(form: any) {
 		this.settlement = new KDSettlement(form.value, "")
 		//move to the new page
-		this.router.navigate(['/settlement', form.value]);
+		this.router.navigate(['/settlement/view', form.value]);
 	}
 
 	ngOnInit(): void {
