@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'quarry-list',
 	template: require('./quarry.component.html'),
-	providers: [QuarryService]
 })
 export class QuarryComponent implements OnInit {
 	@Input() quarryList = {};

@@ -271,7 +271,7 @@ namespace KDBookkeeper.Models
 									.OnDelete(DeleteBehavior.Restrict)
 									.HasConstraintName("FK_SettlementMonster_Monster");
 
-				entity.HasOne(d => d.MonsterNavigation)
+				entity.HasOne(d => d.Settlement)
 									.WithMany(p => p.SettlementMonster)
 									.HasForeignKey(d => d.MonsterId)
 									.OnDelete(DeleteBehavior.Restrict)
@@ -376,5 +376,7 @@ namespace KDBookkeeper.Models
 		public virtual DbSet<SettlementResource> SettlementResource { get; set; }
 		public virtual DbSet<Survivor> Survivor { get; set; }
 		public virtual DbSet<EventConsequence> EventConsequence { get; set; }
+		public virtual DbSet<SettlementHuntHistory>  SettlementHuntHistory { get; set; }
+		public virtual DbSet<SurvivorHuntHistory> SurvivorHuntHistory { get; set; }
 	}
 }

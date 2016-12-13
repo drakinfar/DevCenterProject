@@ -17,7 +17,5 @@ namespace KDBookkeeper.Models
 		public int GameTypeId { get; set; }
 
 		public string Name { get; set; }
-
-
 	}
 }

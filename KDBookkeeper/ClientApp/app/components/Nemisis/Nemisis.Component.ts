@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'nemisis-list',
 	template: require('./nemisis.component.html'),
-	providers: [NemisisService]
 })
 export class NemisisComponent implements OnInit {
 	@Input() nemisisList = {};

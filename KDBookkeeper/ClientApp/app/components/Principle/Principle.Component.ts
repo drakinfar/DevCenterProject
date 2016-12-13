@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'principle-list',
 	template: require('./principle.component.html'),
-	providers: [PrincipleService]
 })
 export class PrincipleComponent implements OnInit {
 	@Input() principleList = {};

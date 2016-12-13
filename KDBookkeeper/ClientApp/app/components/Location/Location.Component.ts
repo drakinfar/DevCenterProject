@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'location-list',
 	template: require('./location.component.html'),
-	providers: [LocationService]
 })
 export class LocationComponent implements OnInit {
 	@Input() locationList = {};

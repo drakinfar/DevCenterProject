@@ -8,8 +8,7 @@ import { Router } from "@angular/router"
 
 @Component({
 	selector: 'settlement-new-form',
-	template: require('./settlementnew.component.html'),
-	providers: [SettlementService, GameTypeService]
+	template: require('./settlementnew.component.html')
 })
 export class SettlementNewComponent implements OnInit {
 	gameTypes = [];
@@ -33,8 +32,8 @@ export class SettlementNewComponent implements OnInit {
 		this.settlementData.name = form.name;
 		this.settlementData.death = form.death;
 		this.settlementData.population = form.population
-		this.settlementData.gameTypeId = form.gameType
-
+		this.settlementData.gameTypeId = form.gametype
+		debugger;
 		this.settlementService.createSettlement(this.settlementData).subscribe(result => {
 			if (result > 0) {
 				this.router.navigate(['/settlement/view', result]);

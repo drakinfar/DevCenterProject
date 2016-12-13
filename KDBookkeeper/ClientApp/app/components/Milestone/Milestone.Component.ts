@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'milestone-list',
 	template: require('./milestone.component.html'),
-	providers: [MilestoneService]
 })
 export class MilestoneComponent implements OnInit {
 	@Input() milestoneList = {};

@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'settlement-item',
 	template: require('./settlement.component.html'),
-	providers: [SettlementService]
 })
 export class SettlementComponent implements OnInit {
 	@Input() settlement = {};

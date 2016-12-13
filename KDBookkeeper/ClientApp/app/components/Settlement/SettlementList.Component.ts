@@ -8,7 +8,6 @@ import { Router } from "@angular/router"
 @Component({
 	selector: 'settlement-list',
 	template: require('./settlementlist.component.html'),
-	providers: [SettlementService]
 })
 export class SettlementListComponent implements OnInit {
 	settlementList = [];

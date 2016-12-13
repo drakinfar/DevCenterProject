@@ -15,6 +15,7 @@ namespace KDBookkeeper.Models
 			SettlementPrinciple = new HashSet<SettlementPrinciple>();
 			SettlementQuarries = new HashSet<SettlementQuarries>();
 			SettlementResource = new HashSet<SettlementResource>();
+			SettlementHuntHistories = new HashSet<SettlementHuntHistory>();
 			Survivor = new HashSet<Survivor>();
 		}
 
@@ -39,6 +40,8 @@ namespace KDBookkeeper.Models
 		public virtual ICollection<SettlementQuarries> SettlementQuarries { get; set; }
 		public virtual ICollection<SettlementResource> SettlementResource { get; set; }
 		public virtual ICollection<Survivor> Survivor { get; set; }
+
+		public virtual ICollection<SettlementHuntHistory> SettlementHuntHistories { get; set; }
 
 		public override string ToString()
 		{

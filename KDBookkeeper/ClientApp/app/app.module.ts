@@ -15,8 +15,19 @@ import { NemisisComponent } from './components/nemisis/nemisis.component';
 import { PrincipleComponent } from './components/principle/principle.component';
 import { QuarryComponent } from './components/quarry/quarry.component';
 import { ResourceComponent } from './components/resource/resource.component';
-import { SettlementListComponent } from './components/settlement/settlementList.component'
-import { SettlementNewComponent } from './components/settlement/settlementNew.component'
+import { SettlementListComponent } from './components/settlement/settlementList.component';
+import { SettlementNewComponent } from './components/settlement/settlementNew.component';
+
+//Services
+import { SettlementService } from './services/settlement.service';
+import { GameTypeService } from './services/gametype.service';
+import { ResourceService } from './services/resource.service';
+import { QuarryService } from './services/quarry.service';
+import { PrincipleService } from './services/principle.service';
+import { NemisisService } from './services/nemisis.service';
+import { MilestoneService } from './services/milestone.service';
+import { LocationService } from './services/location.service';
+import { InnovationService } from './services/innovation.service'
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -54,7 +65,18 @@ import { SettlementNewComponent } from './components/settlement/settlementNew.co
           { path: '**', redirectTo: 'home' }
 				]),
 			FormsModule
-    ]
+		],
+		providers: [
+			SettlementService,
+			GameTypeService,
+			ResourceService,
+			QuarryService,
+			PrincipleService,
+			NemisisService,
+			MilestoneService,
+			LocationService,
+			InnovationService
+		]
 })
 export class AppModule {
 }

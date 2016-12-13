@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router'
 @Component({
 	selector: 'innovation-list',
 	template: require('./innovation.component.html'),
-	providers: [InnovationService]
 })
 export class InnovationComponent implements OnInit {
 	@Input() innovationList = {};
