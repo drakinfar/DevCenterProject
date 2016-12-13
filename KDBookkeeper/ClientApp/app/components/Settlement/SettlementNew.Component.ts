@@ -2,22 +2,44 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { SettlementService } from '../../services/settlement.service'
+import { GameTypeService } from '../../services/gametype.service'
+import { Router } from "@angular/router"
 
 
 @Component({
 	selector: 'settlement-new-form',
 	template: require('./settlementnew.component.html'),
-	providers: [SettlementService]
+	providers: [SettlementService, GameTypeService]
 })
 export class SettlementNewComponent implements OnInit {
+	gameTypes = [];
 
-	constructor(private settlementService: SettlementService, private activatedRoute: ActivatedRoute) { }
+	settlementData = {
+		name: '',
+		death: 0,
+		population: 0,
+		gameTypeId: 0,
+	}
 
-	ngOnInit(): void { }
+	constructor(private settlementService: SettlementService, private gameTypeService: GameTypeService, private activatedRoute: ActivatedRoute, private router: Router) { }
+
+	ngOnInit(): void {
+		this.gameTypeService.getGameTypes().subscribe(gametype => {
+			this.gameTypes = gametype;
+		});
+	}
 
 	createNewSettlement(form: any): void {
-		debugger;
-		var i = form;
+		this.settlementData.name = form.name;
+		this.settlementData.death = form.death;
+		this.settlementData.population = form.population
+		this.settlementData.gameTypeId = form.gameType
+
+		this.settlementService.createSettlement(this.settlementData).subscribe(result => {
+			if (result > 0) {
+				this.router.navigate(['/settlement/view', result]);
+			}
+		});
 	}
 }
 

@@ -38,7 +38,36 @@ namespace KDBookkeeper.Controllers
 		[HttpGet("[action]")]
 		public IEnumerable<Settlement> GetSettlementNames()
 		{
-			return _context.Settlement.Where(c=> c.Active);
+			return _context.Settlement.Where(c => c.Active);
+		}
+
+		[HttpPost("[action]")]
+		public int CreateSettlement([FromBody]SettlementData data)
+		{
+			Settlement settlement = new Settlement()
+			{
+				Active = true,
+				DeathCount = data.Death,
+				GameTypeId = data.GameTypeId,
+				LanternYear = 0,
+				LostSettlements = 0,
+				Name = data.Name,
+				Population = data.Population,
+				SurvivalLimit = 1
+			};
+
+			try
+			{
+				_context.Settlement.Add(settlement);
+
+				_context.SaveChanges();
+				return settlement.Id;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message); //todo: implement real exception logging
+				return -1;
+			}
 		}
 	}
 }

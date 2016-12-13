@@ -10,13 +10,23 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<label for="populationInput">Population</label>
-				<input type="text" id="populationInput" placeholder="Current Population" name="population" ngModel>
+				<input type="number" min="0" step="1" id="populationInput" placeholder="Current Population" name="population" ngModel>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
 				<label for="deathInput">Death Count</label>
-				<input type="text" id="deathInput" placeholder="Number of Deaths" name="death" ngModel>
+				<input type="number" min="0" step="1" id="deathInput" placeholder="Number of Deaths" name="death" ngModel>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="gameTypeInput">Select Game Type</label>
+				<select id="gameTypeInput" name="gametype" ngModel="game.id">
+					<option *ngFor="let game of gameTypes" value="{{game.id}}">
+						{{game.name}}
+					</option>
+				</select>
 			</div>
 		</div>
 		<div class="row">

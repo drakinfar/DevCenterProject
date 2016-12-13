@@ -51,8 +51,6 @@ import { SettlementNewComponent } from './components/settlement/settlementNew.co
 							{ path: 'new', component: SettlementNewComponent } // url: settlement/new
 						]
 					},
-					//{ path: 'settlement/:id', component: SettlementComponent },
-					//{ path: 'settlement/new', component: SettlementNewComponent },
           { path: '**', redirectTo: 'home' }
 				]),
 			FormsModule
