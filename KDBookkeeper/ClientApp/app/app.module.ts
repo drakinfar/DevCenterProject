@@ -26,7 +26,8 @@ import { PrincipleService } from './services/principle.service';
 import { NemisisService } from './services/nemisis.service';
 import { MilestoneService } from './services/milestone.service';
 import { LocationService } from './services/location.service';
-import { InnovationService } from './services/innovation.service'
+import { InnovationService } from './services/innovation.service';
+import { SurvivorService } from './services/survivor.service';
 
 @NgModule({
 	bootstrap: [AppComponent],
@@ -72,7 +73,8 @@ import { InnovationService } from './services/innovation.service'
 		NemisisService,
 		MilestoneService,
 		LocationService,
-		InnovationService
+		InnovationService,
+		SurvivorService
 		]
 })
 export class AppModule {

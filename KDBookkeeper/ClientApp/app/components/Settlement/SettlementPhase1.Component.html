@@ -1,20 +1,70 @@
 ﻿<div class="col-lg-12">
 		<h4>Hunt Survivors Return</h4>
-		<form [formGroup]="phase1" novalidate (ngSubmit)="save(phase1)">
+		<form #form="ngForm" (ngSubmit)="save(form.huntData)">
 			<!-- select monster/level -->
 
 			<!-- select/add hunters -->
 
 
 			<div class="col-md-12">
+				<h4>Hunting Survivors</h4>
 				<div class="row">
-					<div>
-
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="col-sm-4"><strong>Name</strong></div>
+								<div class="col-sm-4"><strong>Alive</strong></div>
+								<div class="col-sm-4"><strong>Remove</strong></div>
+							</div>
+							</div>
+						<div class="row" *ngFor="let survivor of huntData.survivors; let i=index">
+							<div class="col-sm-12">
+								<div class="col-sm-4">
+									{{survivor.name}}
+								</div>
+								
+								<div class="col-sm-4">
+									<div *ngIf="survivor.survived"><span  class="fa fa-user"></span></div>
+									<div *ngIf="!survivor.survived"><span class="fa fa-ambulance"></span></div>
+								</div>
+								<div class="col-sm-4">
+									<button class="btn bg-success" (click)="removeSurvivor(i)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-10">
+						<h4>Add existing hunter</h4>
+						<div class="row">
+							<select id="existingSurvivorInput" name="existingSurvivor" #sur  [(ngModel)]="selectedSurvivor" >
+								<option *ngFor="let survivor of survivorList" [ngValue]="survivor">
+									{{survivor.name}}
+								</option>
+							</select>
+							<label>
+								Survived
+								<input type="checkbox" name="check" #cb checked="checked" (change)="logCheckbox(cb)" />
+							</label>
+							<button class="btn bg-success" (click)="addExistingSurvivor(sur, cb.checked)">
+								<span class="glyphicon glyphicon-tower"></span> Submit
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10">
+						<h4>Add new unnamed hunter</h4>
+						<div class="row">
 
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<button type="submit" [disabled]="!phase1.valid">Save and continue to next phase</button>
+			<button type="submit">Save and continue to next phase</button>
 		</form>
 </div>

@@ -58,4 +58,11 @@
 	<div class="row">
 		<resource-list></resource-list>
 	</div>
+
+</div>
+<div class="row">&nbsp;</div>
+<div class="col-lg-12">
+	<a [routerLink]="['/settlement/phase/1', settlement.id, settlement.lanternYear]" class="button">
+		<span class="glyphicon glyphicon-globe"></span>Start Settlement Phase for Lantern Year {{settlement.lanternYear}}
+	</a>
 </div>
