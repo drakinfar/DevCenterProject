@@ -4,29 +4,36 @@ import { SurvivorService } from '../../services/survivor.service'
 import { ActivatedRoute } from '@angular/router'
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms'
 import { Router } from "@angular/router"
-import { ISurvivorHuntData, ISurvivor} from './settlement.classes'
+import { ISurvivorHuntData, ISurvivor, IMonster } from './settlement.classes'
 
 @Component({
 	selector: 'settlement-wizard',
 	template: require('./settlementphase1.component.html'),
 })
 export class SettlementPhase1Component implements OnInit {
-	public phase1: FormGroup;
 	public huntData: ISurvivorHuntData = {
 		huntYear: 0,
 		monsterId: -1,
 		monsterLevel: -1,
 		settlementId: -1,
-		survivors: [],
+		survivors: []
+	};
+
+	public selMonster: IMonster = {
+		name: "",
+		monsterId: -1,
+		level: -1
 	};
 
 	selSurvivor: ISurvivor;
 	selSurvived: boolean = true;
 	survivorList = [];
+	monsterList = [];
 	 id = 0; //the settlement we are working with
 	 year = 0; //the year we are working with.
 
 	 constructor(
+		private settlementService: SettlementService,
 		private survivorService: SurvivorService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router) { }
@@ -47,6 +54,13 @@ export class SettlementPhase1Component implements OnInit {
 				.subscribe(survivors => {
 					for (var i = 0; i < survivors.length; i++) {
 						this.survivorList.push(survivors[i]);
+					}
+				});
+
+			this.settlementService.getSettlementQuarry(this.id)
+				.subscribe(quarry => {
+					for (var i = 0; i < quarry.length; i++) {
+						this.monsterList.push(quarry[i]);
 					}
 				});
 		}
@@ -70,6 +84,27 @@ export class SettlementPhase1Component implements OnInit {
 		}
 	}
 
+	addNewSurvivor(name: string, survived: any) {
+		var model = {
+			survivorId: -1,
+			name: name,
+			survived: survived
+		}
+		this.huntData.survivors.push(model);
+	}
+
+	removeMonster() {
+		this.selMonster.level = -1;
+		this.selMonster.name = "";
+		this.selMonster.monsterId = -1;
+	}
+
+	addMonster(level: any)
+	{
+		debugger;
+		this.selMonster.level = level;
+	}
+
 	get selectedSurvivor() {
 		return this.selSurvivor;
 	}
@@ -77,4 +112,14 @@ export class SettlementPhase1Component implements OnInit {
 	set selectedSurvivor(value) {
 		this.selSurvivor = value;
 	}
+
+	get selectedMonster() {
+		return this.selMonster;
+	}
+
+	set selectedMonster(value) {
+		this.selMonster = value;
+	}
+
+
 }

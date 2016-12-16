@@ -41,6 +41,18 @@ namespace KDBookkeeper.Controllers
 			return _context.Settlement.Where(c => c.Active);
 		}
 
+		[HttpGet("[action]")]
+		public IEnumerable<MonsterData> GetSettlementQuarry(int Id)
+		{
+			//todo: need nemisis also
+			return _context.SettlementQuarries.Where(c => c.SettlementId == Id).Select(c => new MonsterData()
+			{
+				Level = 0,
+				MonsterId = c.MonsterId,
+				Name = c.Monster.Name
+			});
+		}
+
 		[HttpPost("[action]")]
 		public int CreateSettlement([FromBody]SettlementData data)
 		{

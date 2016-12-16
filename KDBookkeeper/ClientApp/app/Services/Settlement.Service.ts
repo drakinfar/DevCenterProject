@@ -18,6 +18,11 @@ export class SettlementService {
 				result.json());
 	}
 
+	getSettlementQuarry(Id) {
+		return this.http.get(`/api/Settlement/GetSettlementQuarry?Id=${Id}`)
+			.map(result => result.json());
+	}
+
 	createSettlement(settlementData) {
 		var header = new Headers();
 		header.append('Content-Type', 'application/json');

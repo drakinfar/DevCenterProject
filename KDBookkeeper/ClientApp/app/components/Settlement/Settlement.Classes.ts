@@ -16,3 +16,9 @@ export interface ISurvivor {
 	survived: boolean;
 	survivorId: number;
 }
+
+export interface IMonster {
+	name: string;
+	monsterId: number;
+	level: number;
+}

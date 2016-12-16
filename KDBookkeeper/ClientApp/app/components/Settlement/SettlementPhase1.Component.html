@@ -1,34 +1,27 @@
 ﻿<div class="col-lg-12">
-		<h4>Hunt Survivors Return</h4>
-		<form #form="ngForm" (ngSubmit)="save(form.huntData)">
-			<!-- select monster/level -->
-
-			<!-- select/add hunters -->
-
-
-			<div class="col-md-12">
-				<h4>Hunting Survivors</h4>
-				<div class="row">
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-sm-12">
+	<h4>Hunt Survivors Return</h4>
+	<form #form="ngForm" (ngSubmit)="save(form.huntData)">
+		<!-- select monster/level -->
+		<div class="col-md-12">
+			<h4>Quarry</h4>
+			<div class="row">
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="row">
 								<div class="col-sm-4"><strong>Name</strong></div>
-								<div class="col-sm-4"><strong>Alive</strong></div>
+								<div class="col-sm-4"><strong>Level</strong></div>
 								<div class="col-sm-4"><strong>Remove</strong></div>
 							</div>
-							</div>
-						<div class="row" *ngFor="let survivor of huntData.survivors; let i=index">
-							<div class="col-sm-12">
+							<div *ngIf="selMonster.level > 0" class="row">
 								<div class="col-sm-4">
-									{{survivor.name}}
-								</div>
-								
-								<div class="col-sm-4">
-									<div *ngIf="survivor.survived"><span  class="fa fa-user"></span></div>
-									<div *ngIf="!survivor.survived"><span class="fa fa-ambulance"></span></div>
+									{{selMonster.name}}
 								</div>
 								<div class="col-sm-4">
-									<button class="btn bg-success" (click)="removeSurvivor(i)">
+									{{selMonster.level}}
+								</div>
+								<div class="col-sm-4">
+									<button class="btn bg-success" (click)="removeMonster()">
 										<span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</div>
@@ -36,35 +29,109 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-10">
-						<h4>Add existing hunter</h4>
-						<div class="row">
-							<select id="existingSurvivorInput" name="existingSurvivor" #sur  [(ngModel)]="selectedSurvivor" >
-								<option *ngFor="let survivor of survivorList" [ngValue]="survivor">
-									{{survivor.name}}
+			</div>
+			<div class="row">
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-sm-4">
+							<select id="quarryInput" name="quarryInput" style="width: 100%" [(ngModel)]="selectedMonster">
+								<option *ngFor="let monster of monsterList" [ngValue]="monster">
+									{{monster.name}}
 								</option>
 							</select>
+						</div>
+						<div class="col-sm-4">
 							<label>
-								Survived
-								<input type="checkbox" name="check" #cb checked="checked" (change)="logCheckbox(cb)" />
+								Level
+								<input type="number" name="Level" #monsterLevel min="1" max="3" step="1" value="1" />
 							</label>
-							<button class="btn bg-success" (click)="addExistingSurvivor(sur, cb.checked)">
+						</div>
+						<div class="col-sm-4">
+							<button class="btn bg-success" (click)="addMonster(monsterLevel.value)">
 								<span class="glyphicon glyphicon-tower"></span> Submit
 							</button>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-10">
-						<h4>Add new unnamed hunter</h4>
-						<div class="row">
+			</div>
+		</div>
 
+		<!-- select/add hunters -->
+		<div class="col-md-12">
+			<h4>Hunting Survivors</h4>
+			<div class="row">
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-sm-4"><strong>Name</strong></div>
+						<div class="col-sm-4"><strong>Alive</strong></div>
+						<div class="col-sm-4"><strong>Remove</strong></div>
+					</div>
+					<div class="row" *ngFor="let survivor of huntData.survivors; let i=index">
+						<div class="col-sm-4">
+							{{survivor.name}}
+						</div>
+
+						<div class="col-sm-4">
+							<div *ngIf="survivor.survived"><span class="fa fa-user"></span></div>
+							<div *ngIf="!survivor.survived"><span class="fa fa-ambulance"></span></div>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn bg-success" (click)="removeSurvivor(i)">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<div class="row">
+				<div class="col-md-10">
+					<h4>Add existing hunter</h4>
+					<div class="row">
+						<div class="col-sm-4">
+							<select id="existingSurvivorInput" name="existingSurvivor" style="width: 100%" [(ngModel)]="selectedSurvivor">
+								<option *ngFor="let survivor of survivorList" [ngValue]="survivor">
+									{{survivor.name}}
+								</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<label>
+								Survived
+								<input type="checkbox" name="check" #cb checked="checked" />
+							</label>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn bg-success" (click)="addExistingSurvivor(cb.checked)">
+								<span class="glyphicon glyphicon-tower"></span> Submit
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10">
+					<h4>Add new unnamed hunter</h4>
+					<div class="row">
+						<div class="col-sm-4">
+							<input type="text" name="newText" #sur2 placeholder="Add Survivor Name" style="width: 100%" />
+						</div>
+						<div class="col-sm-4">
+							<label>
+								Survived
+								<input type="checkbox" name="newCheck" #cb2 checked="checked" />
+							</label>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn bg-success" (click)="addNewSurvivor(sur2.value, cb2.checked)">
+								<span class="glyphicon glyphicon-tower"></span> Submit
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<button type="submit">Save and continue to next phase</button>
-		</form>
+		</div>
+	</form>
 </div>
