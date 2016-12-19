@@ -63,7 +63,6 @@ import { PhaseService } from './services/phase.service';
 					{ path: 'view/:id', component: SettlementComponent }, // url: settlement/view/#
 					{ path: 'new', component: SettlementNewComponent }, // url: settlement/new
 					{ path: 'phase/:phase/:id/:year', component: PhaseComponent }//, //settlement phase 
-					//{ path: 'phase/2/:id/:year', component: SettlementPhase2Component } //settlement phase 2
 				]
 			},
 			{ path: '**', redirectTo: 'home' }

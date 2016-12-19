@@ -20,7 +20,6 @@ export class PhaseComponent implements OnInit {
 	ngOnInit(): void {
 		this.activatedRoute.params.subscribe(
 			(param: any) => {
-				debugger;
 				this.phase = param['phase'];
 				this.id = param['phase'];
 				this.year = param['year'];
