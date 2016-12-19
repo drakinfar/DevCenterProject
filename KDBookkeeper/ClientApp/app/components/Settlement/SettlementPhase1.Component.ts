@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit, Input } from '@angular/core'
 import { SettlementService } from '../../services/settlement.service'
 import { SurvivorService } from '../../services/survivor.service'
+import { PhaseService } from '../../services/phase.service'
 import { ActivatedRoute } from '@angular/router'
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms'
 import { Router } from "@angular/router"
@@ -32,9 +33,14 @@ export class SettlementPhase1Component implements OnInit {
 	 id = 0; //the settlement we are working with
 	 year = 0; //the year we are working with.
 
+	//TODO: Validate input and warn if there is no creature.
+	//todo: look into recording the gained resources from the hunt
+
+
 	 constructor(
 		private settlementService: SettlementService,
 		private survivorService: SurvivorService,
+		private phaseService: PhaseService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router) { }
 
@@ -66,9 +72,15 @@ export class SettlementPhase1Component implements OnInit {
 		}
 	 }
 
-	save(model: ISurvivorHuntData) {
-		// call API to save the data
-		console.log(model);
+	save() {	
+		this.huntData.monsterLevel = this.selectedMonster.level;
+		this.huntData.monsterId = this.selectedMonster.monsterId;
+		this.phaseService.savePhase1(this.huntData).subscribe(result => {
+			debugger;
+			if (result > 0) {
+				//this.router.navigate(['/settlement/view', result]);
+			}
+		});;
 	}
 
 	removeSurvivor(id: number) {
@@ -101,7 +113,6 @@ export class SettlementPhase1Component implements OnInit {
 
 	addMonster(level: any)
 	{
-		debugger;
 		this.selMonster.level = level;
 	}
 

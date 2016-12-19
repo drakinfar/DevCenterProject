@@ -7,8 +7,8 @@ import { ActivatedRoute } from '@angular/router'
 	template: require('./settlement.component.html'),
 })
 export class SettlementComponent implements OnInit {
-	@Input() settlement = {};
-	@Input() id = 0;
+  settlement = {};
+	id = 0;
 
 	constructor(private settlementService: SettlementService, private activatedRoute: ActivatedRoute) { }
 

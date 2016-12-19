@@ -10,10 +10,10 @@ namespace KDBookkeeper.Models
 	/// </summary>
 	public class SurvivorHuntData
 	{
-		public int HuntYear { get; internal set; }
-		public int MonsterId { get; internal set; }
-		public int MonsterLevel { get; internal set; }
-		public int SettlementId { get; internal set; }
-		public IEnumerable<SurvivorData> Survivors { get; internal set; }
+		public int huntYear { get;  set; }
+		public int monsterId { get;  set; }
+		public int monsterLevel { get;  set; }
+		public int settlementId { get;  set; }
+		public IEnumerable<SurvivorData> survivors { get;  set; }
 	}
 }

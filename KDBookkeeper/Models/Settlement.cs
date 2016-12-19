@@ -31,6 +31,8 @@ namespace KDBookkeeper.Models
 
 		public GameType GameType { get; set; }
 
+		public int CurrentPhase { get; set; }
+
 		public virtual ICollection<SettlementInnovation> SettlementInnovation { get; set; }
 		public virtual ICollection<SettlementLocation> SettlementLocation { get; set; }
 		public virtual ICollection<SettlementMileStones> SettlementMileStones { get; set; }

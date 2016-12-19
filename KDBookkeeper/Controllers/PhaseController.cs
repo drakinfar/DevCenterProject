@@ -1,12 +1,15 @@
-﻿using KDBookkeeper.Models;
+﻿using KDBookkeeper.Engine;
+using KDBookkeeper.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KDBookkeeper.Engine
+namespace KDBookkeeper.Controllers
 {
-	public class SettlementPhase
+	[Route("api/[controller]")]
+	public class PhaseController
 	{
 
 		//Need to implement the following steps
@@ -37,74 +40,92 @@ namespace KDBookkeeper.Engine
 		 */
 
 		KingdomDeathContext _context;
-		public SettlementPhase(KingdomDeathContext context)
+
+		public PhaseController(KingdomDeathContext context)
 		{
 			_context = context;
 		}
 
-		public void ReturnSurvivors(SurvivorHuntData returned)
+
+
+
+		[HttpPost("[action]")]
+		public int SavePhase1([FromBody] SurvivorHuntData data)
 		{
-			//a.surrvivors heal everything but permanent injury (on hold until survivor build out)
-			//b.Add names of the returning survivors (first lantern year only)
-			//record the hunt and who was on it
-			//add the settlementmonster
-			var settlementId = returned.SettlementId;
-
-
-			var settlementMonster = new SettlementMonster()
+			try
 			{
-				MonsterId = returned.MonsterId,
-				MonsterLevel = returned.MonsterLevel,
-				SettlementId = settlementId
-			};
+				//a.surrvivors heal everything but permanent injury (on hold until survivor build out)
+				//b.Add names of the returning survivors (first lantern year only)
+				//record the hunt and who was on it
+				//add the settlementmonster
+				var settlementId = data.settlementId;
 
-			_context.SettlementMonster.Add(settlementMonster);
-
-			//add settlement hunt
-
-			var settlementHuntHistory = new SettlementHuntHistory()
-			{
-				LanternYear = returned.HuntYear,
-				SettlementId = settlementId,
-				SettlementMonster = settlementMonster,
-
-			};
-
-			_context.SettlementHuntHistory.Add(settlementHuntHistory);
-
-			//add hunt participants
-
-			foreach (var survivor in returned.Survivors)
-			{
-				_context.SurvivorHuntHistory.Add(new Models.SurvivorHuntHistory()
+				var settlementMonster = new SettlementMonster()
 				{
-					SettlementHuntHistory = settlementHuntHistory,
-					Survived = survivor.Survived,
-					SurvivorId = survivor.SurvivorId
-				});
+					MonsterId = data.monsterId,
+					MonsterLevel = data.monsterLevel,
+					SettlementId = settlementId
+				};
 
-				if (returned.HuntYear == 0)//first day hunt need to add the hunter names
-					_context.Survivor.Add(new Survivor()
+				_context.SettlementMonster.Add(settlementMonster);
+
+				//add settlement hunt
+
+				var settlementHuntHistory = new SettlementHuntHistory()
+				{
+					LanternYear = data.huntYear,
+					SettlementId = settlementId,
+					SettlementMonster = settlementMonster,
+
+				};
+
+				_context.SettlementHuntHistory.Add(settlementHuntHistory);
+
+				//add hunt participants
+
+				foreach (var survivor in data.survivors)
+				{
+					_context.SurvivorHuntHistory.Add(new Models.SurvivorHuntHistory()
 					{
-						Age = 1,
-						Alive = survivor.Survived,
-						Name = survivor.Name,
-						SettlementId = settlementId
+						SettlementHuntHistory = settlementHuntHistory,
+						Survived = survivor.Survived,
+						SurvivorId = survivor.SurvivorId
 					});
-				else //need to age the survivor
-				{
-					var aSurvivor = _context.Survivor.FirstOrDefault(c => c.Id == survivor.SurvivorId);
-					if (aSurvivor != null)
-					{
-						aSurvivor.Age += 1;
-						aSurvivor.Alive = survivor.Survived;
-					}
-						
-				}
-			}
 
-			_context.SaveChanges();
+					if (data.huntYear == 0)//first day hunt need to add the hunter names
+						_context.Survivor.Add(new Survivor()
+						{
+							Age = 1,
+							Alive = survivor.Survived,
+							Name = survivor.Name,
+							SettlementId = settlementId
+						});
+					else //need to age the survivor
+					{
+						var aSurvivor = _context.Survivor.FirstOrDefault(c => c.Id == survivor.SurvivorId);
+						if (aSurvivor != null)
+						{
+							aSurvivor.Age += 1;
+							aSurvivor.Alive = survivor.Survived;
+						}
+
+					}
+				}
+
+				var settlement = _context.Settlement.FirstOrDefault(c => c.Id == settlementId);
+				settlement.CurrentPhase += 1; //move to the next step. this will keep the settlement phases in order and allow for returning to the last phase.
+				_context.SaveChanges();
+				return 0;
+			}
+			catch (Exception e)
+			{
+				//todo:Implement error logging
+				Console.WriteLine(e.Message);
+				return -1;
+
+			}
 		}
+
 
 
 		/// <summary>

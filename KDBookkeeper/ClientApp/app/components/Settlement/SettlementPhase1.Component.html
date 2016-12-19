@@ -1,6 +1,6 @@
 ﻿<div class="col-lg-12">
 	<h4>Hunt Survivors Return</h4>
-	<form #form="ngForm" (ngSubmit)="save(form.huntData)">
+	<form #form="ngForm">
 		<!-- select monster/level -->
 		<div class="col-md-12">
 			<h4>Quarry</h4>
@@ -131,7 +131,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<button type="submit">Save and continue to next phase</button>
+			<button type="submit" (click)="save()">Save and continue to next phase</button>
 		</div>
 	</form>
 </div>

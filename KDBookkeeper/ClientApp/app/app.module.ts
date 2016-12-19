@@ -16,6 +16,8 @@ import { ResourceComponent } from './components/resource/resource.component';
 import { SettlementListComponent } from './components/settlement/settlementList.component';
 import { SettlementNewComponent } from './components/settlement/settlementNew.component';
 import { SettlementPhase1Component } from './components/settlement/settlementPhase1.component';
+import { SettlementPhase2Component } from './components/settlement/settlementPhase2.component';
+import { PhaseComponent } from './components/phase/phase.component';
 
 //Services
 import { SettlementService } from './services/settlement.service';
@@ -28,6 +30,7 @@ import { MilestoneService } from './services/milestone.service';
 import { LocationService } from './services/location.service';
 import { InnovationService } from './services/innovation.service';
 import { SurvivorService } from './services/survivor.service';
+import { PhaseService } from './services/phase.service';
 
 @NgModule({
 	bootstrap: [AppComponent],
@@ -44,7 +47,9 @@ import { SurvivorService } from './services/survivor.service';
 		ResourceComponent,
 		SettlementListComponent,
 		SettlementNewComponent,
+		PhaseComponent,
 		SettlementPhase1Component,
+		SettlementPhase2Component,
 		HomeComponent
 	],
 	imports: [
@@ -57,7 +62,8 @@ import { SurvivorService } from './services/survivor.service';
 				children: [
 					{ path: 'view/:id', component: SettlementComponent }, // url: settlement/view/#
 					{ path: 'new', component: SettlementNewComponent }, // url: settlement/new
-					{ path: 'phase/1/:id/:year', component: SettlementPhase1Component } //settlement phase 1
+					{ path: 'phase/:phase/:id/:year', component: PhaseComponent }//, //settlement phase 
+					//{ path: 'phase/2/:id/:year', component: SettlementPhase2Component } //settlement phase 2
 				]
 			},
 			{ path: '**', redirectTo: 'home' }
@@ -74,7 +80,8 @@ import { SurvivorService } from './services/survivor.service';
 		MilestoneService,
 		LocationService,
 		InnovationService,
-		SurvivorService
+		SurvivorService,
+		PhaseService
 		]
 })
 export class AppModule {
