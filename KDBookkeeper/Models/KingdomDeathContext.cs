@@ -378,5 +378,7 @@ namespace KDBookkeeper.Models
 		public virtual DbSet<EventConsequence> EventConsequence { get; set; }
 		public virtual DbSet<SettlementHuntHistory>  SettlementHuntHistory { get; set; }
 		public virtual DbSet<SurvivorHuntHistory> SurvivorHuntHistory { get; set; }
+		public virtual DbSet<SettlementEventHistory>  SettlementEventHistory { get; set; }
+
 	}
 }

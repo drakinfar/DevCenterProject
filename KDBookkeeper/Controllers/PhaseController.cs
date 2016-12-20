@@ -14,15 +14,6 @@ namespace KDBookkeeper.Controllers
 
 		//Need to implement the following steps
 		/*
-		1. Survivors return. 
-			a. surrvivors heal everything but permanent injury (on hold until survivor build out)
-			b. Add names of the returning survivors (first lantern year only)
-		 
-		2. Gain Endeavors. outside of the bookkeeper but may want to generate or display the rule
-			a. Each returning survivor generates 1 endeavor point. These are not recorded as they are lost if not used.
-		3. Settlement Event.
-			a. generate settlement event. First day for the first year
-			b. each subsequent play a random event by drawing from the random event deck.
 		4. Update the death Count
 			a. this is a function of the losses from the event and survivors who do not return from the hunt.
 		5. Update the Timeline.
@@ -126,7 +117,30 @@ namespace KDBookkeeper.Controllers
 			}
 		}
 
+		//todo: Implement endeavors. Currently Outside of the scope of the project
+		//	2. Gain Endeavors.outside of the bookkeeper but may want to generate or display the rule
+		//	a.Each returning survivor generates 1 endeavor point. These are not recorded as they are lost if not used.
 
+		public int SavePhase3([FromBody] object data)
+		{
+			//3. Settlement Event.
+			//a.generate settlement event. First day for the first year
+			//b. each subsequent play a random event by drawing from the random event deck.
+
+
+			try
+			{
+
+				return 0;
+			}
+			catch (Exception e)
+			{
+
+				//todo:Implement error logging
+				Console.WriteLine(e.Message);
+				return -1;
+			}
+		}
 
 		/// <summary>
 		/// gets the next event for the indicated latern year and settlement ID
