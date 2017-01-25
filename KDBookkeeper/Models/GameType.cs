@@ -7,7 +7,7 @@ namespace KDBookkeeper.Models
 	{
 		public GameType()
 		{
-			GameEvents = new HashSet<GameEvents>();
+			GameEvents = new HashSet<GameEvent>();
 			GameStartingInnovation = new HashSet<GameStartingInnovation>();
 			Settlements = new HashSet<Settlement>();
 		}
@@ -16,7 +16,7 @@ namespace KDBookkeeper.Models
 		public string Name { get; set; }
 		public string Description { get; set; }
 
-		public virtual ICollection<GameEvents> GameEvents { get; set; }
+		public virtual ICollection<GameEvent> GameEvents { get; set; }
 		public virtual ICollection<GameStartingInnovation> GameStartingInnovation { get; set; }
 		public virtual ICollection<Settlement> Settlements { get; set; }
 	}

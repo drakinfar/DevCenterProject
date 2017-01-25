@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KDBookkeeper.Models
 {
-    public partial class GameEvents
+    public partial class GameEvent
     {
         public int LaternEventId { get; set; }
         public int GameTypeId { get; set; }

@@ -41,7 +41,7 @@ namespace KDBookkeeper.Models
 					.HasConstraintName("FK_EventConsequences_LanternEvent");
 			});
 
-			modelBuilder.Entity<GameEvents>(entity =>
+			modelBuilder.Entity<GameEvent>(entity =>
 			{
 				entity.Property(e => e.IsRandom).HasColumnName("isRandom");
 
@@ -244,7 +244,7 @@ namespace KDBookkeeper.Models
 									.HasConstraintName("FK_SettlementLocation_Settlement");
 			});
 
-			modelBuilder.Entity<SettlementMileStones>(entity =>
+			modelBuilder.Entity<SettlementMileStone>(entity =>
 			{
 				entity.Property(e => e.Name)
 									.IsRequired()
@@ -353,7 +353,7 @@ namespace KDBookkeeper.Models
 		}
 
 		public virtual DbSet<AppliesKeyword> AppliesKeyword { get; set; }
-		public virtual DbSet<GameEvents> GameEvents { get; set; }
+		public virtual DbSet<GameEvent> GameEvents { get; set; }
 		public virtual DbSet<GameStartingInnovation> GameStartingInnovation { get; set; }
 		public virtual DbSet<GameType> GameType { get; set; }
 		public virtual DbSet<Innovation> Innovation { get; set; }
@@ -368,7 +368,7 @@ namespace KDBookkeeper.Models
 		public virtual DbSet<Settlement> Settlement { get; set; }
 		public virtual DbSet<SettlementInnovation> SettlementInnovation { get; set; }
 		public virtual DbSet<SettlementLocation> SettlementLocation { get; set; }
-		public virtual DbSet<SettlementMileStones> SettlementMileStones { get; set; }
+		public virtual DbSet<SettlementMileStone> SettlementMileStones { get; set; }
 		public virtual DbSet<SettlementMonster> SettlementMonster { get; set; }
 		public virtual DbSet<SettlementNemisis> SettlementNemisis { get; set; }
 		public virtual DbSet<SettlementPrinciple> SettlementPrinciple { get; set; }

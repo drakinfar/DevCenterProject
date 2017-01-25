@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KDBookkeeper.Models
 {
-    public partial class SettlementMileStones
+    public partial class SettlementMileStone
     {
         public int Id { get; set; }
         public string Name { get; set; }

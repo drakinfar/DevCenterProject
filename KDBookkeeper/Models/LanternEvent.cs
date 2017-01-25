@@ -7,8 +7,8 @@ namespace KDBookkeeper.Models
 	{
 		public LanternEvent()
 		{
-			GameEvents = new HashSet<GameEvents>();
-			SettlementMileStones = new HashSet<SettlementMileStones>();
+			GameEvents = new HashSet<GameEvent>();
+			SettlementMileStones = new HashSet<SettlementMileStone>();
 			EventConsequences = new HashSet<EventConsequence>();
 			EventCharts = new HashSet<EventChart>();
 		}
@@ -20,8 +20,8 @@ namespace KDBookkeeper.Models
 		public string Expansion { get; set; }
 		public bool IsRandom { get; set; }
 
-		public virtual ICollection<GameEvents> GameEvents { get; set; }
-		public virtual ICollection<SettlementMileStones> SettlementMileStones { get; set; }
+		public virtual ICollection<GameEvent> GameEvents { get; set; }
+		public virtual ICollection<SettlementMileStone> SettlementMileStones { get; set; }
 		public virtual ICollection<EventConsequence> EventConsequences { get; set; }
 		public virtual ICollection<EventChart> EventCharts { get; set; }
 	}

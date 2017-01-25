@@ -9,7 +9,7 @@ namespace KDBookkeeper.Models
 		{
 			SettlementInnovation = new HashSet<SettlementInnovation>();
 			SettlementLocation = new HashSet<SettlementLocation>();
-			SettlementMileStones = new HashSet<SettlementMileStones>();
+			SettlementMileStones = new HashSet<SettlementMileStone>();
 			SettlementMonster = new HashSet<SettlementMonster>();
 			SettlementNemisis = new HashSet<SettlementNemisis>();
 			SettlementPrinciple = new HashSet<SettlementPrinciple>();
@@ -35,7 +35,7 @@ namespace KDBookkeeper.Models
 
 		public virtual ICollection<SettlementInnovation> SettlementInnovation { get; set; }
 		public virtual ICollection<SettlementLocation> SettlementLocation { get; set; }
-		public virtual ICollection<SettlementMileStones> SettlementMileStones { get; set; }
+		public virtual ICollection<SettlementMileStone> SettlementMileStones { get; set; }
 		public virtual ICollection<SettlementMonster> SettlementMonster { get; set; }
 		public virtual ICollection<SettlementNemisis> SettlementNemisis { get; set; }
 		public virtual ICollection<SettlementPrinciple> SettlementPrinciple { get; set; }
